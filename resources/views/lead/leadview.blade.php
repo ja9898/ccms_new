@@ -67,6 +67,7 @@
                       <a href="{!! url('/lead/lead_detail/'.$lead['id'] ); !!}" class="btn btn-primary" title="View Detail"><i class="fa fa-eye"></i> </a>    
                       <a href="{!! url('/lead/'.$lead['id'].'/edit'); !!}"  class="btn btn-success" title="Edit"><i class="fa fa-edit"></i> </a>
                       <a href="{!! url('/recording/'.$lead['id'].'/recordingcreate'); !!}" target='_blank'  class="btn btn-warning" title="Recording link"><i class="fa fa-file-audio-o"></i> </a>
+                      <a href="{!! url('/appointment/'.$lead['id'].'/appointmentcreate'); !!}" target='_blank'  class="btn btn-primary" title="Make appointment"><i class="fa fa-calendar"></i> </a>
                       
 					  @if ($lead['leadstatus'] === 1)
                         <a href="{!! url('/lead/deactivate_lead/'.$lead['id']); !!}"  class="btn btn-warning" title="Deactivate"><i class="fa fa-times"></i> </a>

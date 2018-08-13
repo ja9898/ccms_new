@@ -35,6 +35,7 @@ $user = Auth::user();
         <li class="<?php echo ($urlpath == 'admins' || Route::currentRouteName()=='admins.edit' || Route::currentRouteName()=='admins.create' || Route::currentRouteName()=='admins.show') ? "active" : ""; ?>"><a href="{!! url('/admins'); !!}">Manage Admins</a></li>
 		<li class="<?php echo ($urlpath == 'lead.leadview' || Route::currentRouteName()=='admins.edit' || Route::currentRouteName()=='admins.create' || Route::currentRouteName()=='admins.show') ? "active" : ""; ?>"><a href="{!! url('/lead/leadview'); !!}">Leads</a></li>
 		<li class="<?php echo ($urlpath == 'recording.recordingview' || Route::currentRouteName()=='admins.edit' || Route::currentRouteName()=='admins.create' || Route::currentRouteName()=='admins.show') ? "active" : ""; ?>"><a href="{!! url('/recording/recordingview'); !!}">Recordings</a></li>
+		<li class="<?php echo ($urlpath == 'appointment.appointmentview' || Route::currentRouteName()=='admins.edit' || Route::currentRouteName()=='admins.create' || Route::currentRouteName()=='admins.show') ? "active" : ""; ?>"><a href="{!! url('/appointment/appointmentview'); !!}">Appointment</a></li>
       </ul>
     </li>
     <li class="<?php echo ($urlpath == 'categories' || Route::currentRouteName()=='categories.create' || Route::currentRouteName()=='categories.edit')  ? "active" : ""; ?>"><a href="{!! url('/categories'); !!}"><i class="fa fa-tag"></i> <span>Categories</span></a></li>

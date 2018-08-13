@@ -55,45 +55,37 @@
 						<!-- checkboxes -->
 						<tr>
 							<td><b>Company Profile</b></td>
-							@if ($lead_detail->company_pro === 1)
-								<td><input type="checkbox" class="minimal" name="company_pro" value="1" id="company_pro"  checked="checked" disabled /></td>
-							@else
-								<td><input type="checkbox" class="minimal" name="company_pro" value="1" id="company_pro"   disabled ></td>
-							@endif
+							<td><input type="checkbox" class="minimal" name="company_pro" value="1" id="company_pro" <?php if($lead_detail->company_pro){ ?> checked="'checked'" <?php } ?>  disabled /></td>
 						</tr>
 						<tr>
-							<td><b>Company Profile</b></td>
-							@if ($lead_detail->testimonials === 1)
-								<td><input type="checkbox" class="minimal" name="company_pro" value="1" id="company_pro"  checked="checked" disabled /></td>
-							@else
-								<td><input type="checkbox" class="minimal" name="company_pro" value="1" id="company_pro"   disabled ></td>
-							@endif
+							<td><b>Testimonials</b></td>
+							<td><input type="checkbox" class="minimal" name="testimonials" value="1" id="testimonials" <?php if($lead_detail->testimonials){ ?> checked="'checked'" <?php } ?> disabled /></td>
 						</tr>
 						<tr>
-							<td><b>Company Profile</b></td>
-							@if ($lead_detail->sol_ser === 1)
-								<td><input type="checkbox" class="minimal" name="company_pro" value="1" id="company_pro"  checked="checked" disabled /></td>
-							@else
-								<td><input type="checkbox" class="minimal" name="company_pro" value="1" id="company_pro"   disabled ></td>
-							@endif
+							<td><b>Solution & Services</b></td>
+							<td><input type="checkbox" class="minimal" name="sol_ser" value="1" id="sol_ser" <?php if($lead_detail->sol_ser){ ?> checked="'checked'" <?php } ?> disabled ></td>
 						</tr>
 
 						<!-- social links -->
 						<tr>
 							<td><b>Facebook</b></td>
 							<td>{{$lead_detail->fb_link}}</td>
+							<td>{{$lead_detail->fb_likes}}</td>
 						</tr>
 						<tr>
 							<td><b>Twitter</b></td>
 							<td>{{$lead_detail->tw_link}}</td>
+							<td>{{$lead_detail->tw_followers}}</td>
 						</tr>				
 						<tr>
 							<td><b>Instagram</b></td>
 							<td>{{$lead_detail->in_link}}</td>
+							<td>{{$lead_detail->in_followers}}</td>
 						</tr>
 						<tr>
 							<td><b>LinkedIn</b></td>
 							<td>{{$lead_detail->li_link}}</td>
+							<td>{{$lead_detail->li_visitors}}</td>
 						</tr>
 						<tr>
 							<td><b>Web</b></td>
@@ -127,6 +119,9 @@
 			
 			<!-- Recording table START -->
             <!-- /.box-header -->
+            <div class="box-header with-border">
+              <h3 class="box-title">Recordings of Above Lead [{{$lead_detail->businessName}}]</b></h3>
+            </div>			
             <div class="box-body">
 				<div class="row">
 				<div class="col-md-8">

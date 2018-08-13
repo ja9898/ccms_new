@@ -15,7 +15,7 @@
             <div class="box-header">
               <h3 class="box-title">Manage Recordings</h3>
               <span class="pull-right">
-              <a href="{!! url('/recording/recordingcreate'); !!}" class="btn btn-info"><span class="fa fa-plus"></span> Add Recording</a>
+              <!--<a href="{!! url('/recording/recordingcreate'); !!}" class="btn btn-info"><span class="fa fa-plus"></span> Add Recording</a>-->
 
             </div>
             <!-- /.box-header -->

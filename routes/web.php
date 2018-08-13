@@ -55,6 +55,7 @@ Route::get('/changepassword', ['as' => 'changepassword' , function () {
  Route::get('/lead/deactivate_lead/{id}', 'UserController@deactivate_lead')->middleware('auth'); 
  Route::get('/lead/active_lead/{id}', 'UserController@active_lead')->middleware('auth');  
  Route::delete('/lead/destroy_lead/{id}', 'UserController@destroy_lead')->middleware('auth');  
+ //Route::resource('lead', 'UserController')->middleware('auth');
  
  //Recording
  Route::get('/recording/{id}/recordingcreate', 'UserController@create_recording')->middleware('auth');
@@ -63,4 +64,11 @@ Route::get('/changepassword', ['as' => 'changepassword' , function () {
  Route::get('/recording/recording_detail/{id}', 'UserController@view_recording_detail')->middleware('auth');
  Route::delete('/recording/destroy_recording/{id}', 'UserController@destroy_recording')->middleware('auth');  
  //Route::resource('recordings', 'UserController')->middleware('auth');
+ 
+ //Appointment
+ Route::get('/appointment/appointmentview', 'UserController@view_appointment')->middleware('auth');  
+ Route::get('/appointment/{id}/appointmentcreate', 'UserController@create_appointment')->middleware('auth'); 
+ Route::post('/appointment', 'UserController@store_appointment')->middleware('auth');
+ Route::delete('/appointment/destroy_appointment/{id}', 'UserController@destroy_appointment')->middleware('auth');
+ 
  

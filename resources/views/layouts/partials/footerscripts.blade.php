@@ -21,7 +21,7 @@
      Both of these plugins are recommended to enhance the
      user experience. -->
      <!-- page script -->
-@if (\Request::is('admins') or \Request::is('roles') or \Request::is('categories') or \Request::is('lead/leadview') or \Request::is('recording/recordingview') or \Request::is('lead/lead_detail') )  
+@if (\Request::is('admins') or \Request::is('roles') or \Request::is('categories') or \Request::is('lead/leadview') or \Request::is('recording/recordingview') or \Request::is('lead/lead_detail') or \Request::is('appointment/appointmentview'))  
   <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
   <script src="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js"></script>
 
@@ -39,7 +39,7 @@
     })
   </script>
 @endif
-@if(\Request::is('admins')  or \Request::is('categories') or \Request::is('lead/leadview') or \Request::is('recording/recordingview'))
+@if(\Request::is('admins')  or \Request::is('categories') or \Request::is('lead/leadview') or \Request::is('recording/recordingview') or \Request::is('appointment/appointmentview'))
 <script>
   function archiveFunction(formid) {
     event.preventDefault(); // prevent form submit

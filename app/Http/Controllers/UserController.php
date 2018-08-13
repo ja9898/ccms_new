@@ -2,6 +2,7 @@
 use App\User;
 use App\Lead;
 use App\Recording;
+use App\Appointment;
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -65,6 +66,16 @@ class UserController extends Controller
 		$recording_detail = \App\Recording::find($recording_id);
 		return view('recording.recording_detail', compact('recording_detail'));
     }
+
+    public function view_appointment()
+    {
+/* 		$appointment = \App\Appointment::all();
+		return view('appointment.appointmentview', compact('appointment')); */
+		$appointment = \App\Appointment::with('user')->get();
+		return view('appointment.appointmentview', compact ('appointment'));
+    }
+	
+	
 	
 
     /**
@@ -91,6 +102,15 @@ class UserController extends Controller
         //
 		$lead_id = $id;
         return view('recording.recordingcreate',[ 'lead_id' => $lead_id]);
+
+    }
+
+	public function create_appointment($id)
+    {
+        //
+		$lead_id = $id;
+		$lead_info = \App\Lead::find($lead_id);
+        return view('appointment.appointmentcreate',[ 'lead_info' => $lead_info]);
 
     }	
 
@@ -173,9 +193,13 @@ class UserController extends Controller
         $lead->testimonials=$request->get('testimonials');echo "<br>";
         $lead->sol_ser=$request->get('sol_ser');echo "<br>";
         $lead->fb_link=$request->get('fb_link');
+		$lead->fb_likes=$request->get('fb_likes');
         $lead->tw_link=$request->get('tw_link');
+		$lead->tw_followers=$request->get('tw_followers');
         $lead->in_link=$request->get('in_link');
+		$lead->in_followers=$request->get('in_followers');
         $lead->li_link=$request->get('li_link');
+		$lead->li_visitors=$request->get('li_visitors');
         $lead->web_link=$request->get('web_link');
         $lead->user_id=$last_user_id;
 		$lead->leadstatus=1;
@@ -223,6 +247,26 @@ class UserController extends Controller
         return redirect('recording/recordingview')->with('success', 'Recording Added successfully.');
 
     }
+	
+    public function store_appointment(Request $request)
+    {
+        $this->validate(request(), [
+            'description' => 'required',
+
+        ]);		
+
+        $record= new \App\Appointment;
+        $record->description=$request->get('description');
+		$record->lead_id=$request->get('lead_id');
+		$record->user_id=$request->get('user_id');
+        $date=date_create($request->get('date'));
+        $format = date_format($date,"Y-m-d");
+        $record->created_at = strtotime($format);
+        $record->updated_at = strtotime($format);
+        $record->save();
+        return redirect('appointment/appointmentview')->with('success', 'Appointment Added successfully.');
+
+    }	
 		
 	
     /**
@@ -436,9 +480,13 @@ class UserController extends Controller
         $update_lead->testimonials=$request->get('testimonials');echo "<br>";
         $update_lead->sol_ser=$request->get('sol_ser');echo "<br>";
         $update_lead->fb_link=$request->get('fb_link');
+		$update_lead->fb_likes=$request->get('fb_likes');
         $update_lead->tw_link=$request->get('tw_link');
+        $update_lead->tw_followers=$request->get('tw_followers');		
         $update_lead->in_link=$request->get('in_link');
+		$update_lead->in_followers=$request->get('in_followers');
         $update_lead->li_link=$request->get('li_link');
+		$update_lead->li_visitors=$request->get('li_visitors');
         $update_lead->web_link=$request->get('web_link');
 		$update_lead->leadstatus=$request->get('leadstatus');
 		$date=date_create($request->get('date'));
@@ -482,6 +530,16 @@ class UserController extends Controller
             'UserController@view_recording' 
         )->with('success', 'Recording has been deleted.');
         
-    }	
+    }
+	
+	public function destroy_appointment($id)
+    {
+        $user = \App\Appointment::find($id);
+        $user->delete();
+        return redirect()->action(
+            'UserController@view_appointment' 
+        )->with('success', 'Appointment has been deleted.');
+        
+    }
 	
 }

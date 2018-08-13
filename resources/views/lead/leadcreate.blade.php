@@ -179,10 +179,19 @@
 			<div class="form-group">
                   <label for="description" class="col-sm-3 control-label">Facebook</label>
                   <div class="col-sm-9">
-                    <input type="text" class="form-control" id="fb_link" name="fb_link" placeholder="fb_link" autocomplete="off" value="" require />
+                    <input type="text" class="form-control" id="fb_link" name="fb_link" placeholder="Facebook link" autocomplete="off" value="" require />
                     @if ($errors->has('fb_link'))
                           <span class="text-red">
                               <strong>{{ $errors->first('fb_link') }}</strong>
+                          </span>
+                      @endif
+                  </div>
+				  <label for="description" class="col-sm-3 control-label">Facebook Likes</label>
+                  <div class="col-sm-3">
+                    <input type="number" class="form-control" id="fb_likes" name="fb_likes" placeholder="Likes count" autocomplete="off" value="" require />
+                    @if ($errors->has('fb_likes'))
+                          <span class="text-red">
+                              <strong>{{ $errors->first('fb_likes') }}</strong>
                           </span>
                       @endif
                   </div>
@@ -190,10 +199,19 @@
 			<div class="form-group">
                   <label for="description" class="col-sm-3 control-label">Twitter</label>
                   <div class="col-sm-9">
-                    <input type="text" class="form-control" id="tw_link" name="tw_link" placeholder="tw_link" autocomplete="off" value="" require />
+                    <input type="text" class="form-control" id="tw_link" name="tw_link" placeholder="Twitter Link" autocomplete="off" value="" require />
                     @if ($errors->has('tw_link'))
                           <span class="text-red">
                               <strong>{{ $errors->first('tw_link') }}</strong>
+                          </span>
+                      @endif
+                  </div>
+				  <label for="description" class="col-sm-3 control-label">Twitter Followers</label>
+                  <div class="col-sm-3">
+                    <input type="number" class="form-control" id="tw_followers" name="tw_followers" placeholder="Followers count" autocomplete="off" value="" require />
+                    @if ($errors->has('tw_followers'))
+                          <span class="text-red">
+                              <strong>{{ $errors->first('tw_followers') }}</strong>
                           </span>
                       @endif
                   </div>
@@ -201,10 +219,19 @@
 			<div class="form-group">
                   <label for="description" class="col-sm-3 control-label">Instagram</label>
                   <div class="col-sm-9">
-                    <input type="text" class="form-control" id="in_link" name="in_link" placeholder="in_link" autocomplete="off" value="" require />
+                    <input type="text" class="form-control" id="in_link" name="in_link" placeholder="Instagram Link" autocomplete="off" value="" require />
                     @if ($errors->has('in_link'))
                           <span class="text-red">
                               <strong>{{ $errors->first('in_link') }}</strong>
+                          </span>
+                      @endif
+                  </div>
+				  <label for="description" class="col-sm-3 control-label">Instagram Followers</label>
+                  <div class="col-sm-3">
+                    <input type="number" class="form-control" id="in_followers" name="in_followers" placeholder="Followers count" autocomplete="off" value="" require />
+                    @if ($errors->has('in_followers'))
+                          <span class="text-red">
+                              <strong>{{ $errors->first('in_followers') }}</strong>
                           </span>
                       @endif
                   </div>
@@ -212,10 +239,19 @@
 			<div class="form-group">
                   <label for="description" class="col-sm-3 control-label">LinkedIn</label>
                   <div class="col-sm-9">
-                    <input type="text" class="form-control" id="li_link" name="li_link" placeholder="li_link" autocomplete="off" value="" require />
+                    <input type="text" class="form-control" id="li_link" name="li_link" placeholder="LinkedIn Link" autocomplete="off" value="" require />
                     @if ($errors->has('li_link'))
                           <span class="text-red">
                               <strong>{{ $errors->first('li_link') }}</strong>
+                          </span>
+                      @endif
+                  </div>
+				  <label for="description" class="col-sm-3 control-label">LinkedIn visitors</label>
+                  <div class="col-sm-3">
+                    <input type="number" class="form-control" id="li_visitors" name="li_visitors" placeholder="Profile visitors" autocomplete="off" value="" require />
+                    @if ($errors->has('li_visitors'))
+                          <span class="text-red">
+                              <strong>{{ $errors->first('li_visitors') }}</strong>
                           </span>
                       @endif
                   </div>

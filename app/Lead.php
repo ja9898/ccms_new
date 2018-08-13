@@ -27,6 +27,7 @@ class Lead extends Model
     {
 		return $this->hasMany('App\Recording');
     }
+	
 }
 
 
