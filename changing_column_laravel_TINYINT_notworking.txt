@@ -1,0 +1,27 @@
+user info 
+------------
+first name
+last name 
+email
+phone
+--------------
+iscustomer hidden 1
+name of business
+nature of business
+description
+
+
+
+
+
+
+C:\wamp32\www\erp>php artisan make:migration update_users_table
+Created Migration: 2018_08_09_123521_update_users_table
+
+
+
+C:\wamp32\www\erp>php artisan migrate
+Migrating: 2018_08_09_123521_update_users_table
+Migrated:  2018_08_09_123521_update_users_table
+
+C:\wamp32\www\erp>
