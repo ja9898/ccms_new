@@ -9,11 +9,31 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+use App\Notifications\RecordingPublished;
+use App\Notifications\NewLead;
+
+
 Route::get('/', function () {
     return view('home');
 });
+//Notification toMail TEST Route	//Working
+/* Route::get('/testemail', function () {
+    //return view('testemail');
+	$user = \App\User::first();
+	$lead = \App\Lead::first();
+	$check = $user->notify(new RecordingPublished($user,$lead)); 
+	if($check){
+		echo "EMAIL SENT";
+	}
+}); */
 
-
+//Notification toDatabase TEST Route	//Working
+/* Route::get('/testdatabase', function () {
+	$user = \App\User::find(20);
+	$lead = \App\Lead::find(9);
+	$lead->notify(new NewLead($user,$lead)); 
+}); */
 
 Auth::routes();
 // Two Factor Authentication

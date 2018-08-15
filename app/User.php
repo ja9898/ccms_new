@@ -1,7 +1,7 @@
 <?php
 
 namespace App;
-
+use DB;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 // Added for the hasMany method
@@ -43,4 +43,5 @@ class User extends Authenticatable
 	{
 		return $this->hasMany('App\Appointment');
 	}
+
 }

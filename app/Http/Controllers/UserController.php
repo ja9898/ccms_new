@@ -9,6 +9,9 @@ use Illuminate\Support\Facades\Auth;
 use Validator;
 use Illuminate\Support\Facades\Hash;
 use DB;
+use App\Notifications\RecordingPublished;
+use App\Notifications\NewLead;
+
 
 class UserController extends Controller
 {
@@ -176,7 +179,7 @@ class UserController extends Controller
         $user->status = 1;		
 		$user->password=Hash::make(str_random(6));
         $date=date_create($request->get('date'));
-        $format = date_format($date,"Y-m-d");
+        $format = date_format($date,"Y-m-d H:i:s");
         $user->created_at = strtotime($format);
         $user->updated_at = strtotime($format);
 		$user->is_customer = 1;
@@ -204,16 +207,15 @@ class UserController extends Controller
         $lead->user_id=$last_user_id;
 		$lead->leadstatus=1;
 		$date=date_create($request->get('date'));
-        $format = date_format($date,"Y-m-d");
+        $format = date_format($date,"Y-m-d H:i:s");
         $lead->created_at = strtotime($format);
         $lead->updated_at = strtotime($format);
 		//dd($request->all());
 		//exit;
 		$lead->save();
+		//Laravel Email Notification during USER and LEAD Insertion
+		$lead->notify(new NewLead($user,$lead));
         return redirect('lead/leadview')->with('success', 'Customer has been created successfully against the lead.');
-		
-		
-		
     }
 
     public function store_recording(Request $request)

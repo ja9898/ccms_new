@@ -3,9 +3,12 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+//use Illuminate\Notifications\Notification;
 
 class Recording extends Model
 {
+    //use Notifiable;
+	
 	public $table = 'recording';
     //
 	protected $fillable = [
