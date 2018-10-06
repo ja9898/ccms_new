@@ -15,13 +15,21 @@
 <script src="{{ asset('bower_components/jquery-slimscroll/jquery.slimscroll.min.js') }}"></script>
 <!-- FastClick -->
 <script src="{{ asset('bower_components/fastclick/lib/fastclick.js') }}"></script>
+<!-- Select2 -->
+<script src="{{ asset('bower_components/select2/dist/js/select2.full.min.js') }}"></script>
+<script>
+  $(function () {
+    //Initialize Select2 Elements
+    $('.select2').select2()
+  })
+</script>
 
 
 <!-- Optionally, you can add Slimscroll and FastClick plugins.
      Both of these plugins are recommended to enhance the
      user experience. -->
      <!-- page script -->
-@if (\Request::is('admins') or \Request::is('roles') or \Request::is('categories') or \Request::is('lead/leadview') or \Request::is('recording/recordingview') or \Request::is('lead/lead_detail') or \Request::is('appointment/appointmentview'))  
+@if (\Request::is('admins') or \Request::is('roles') or \Request::is('categories') or \Request::is('lead/leadview') or \Request::is('recording/recordingview') or \Request::is('lead/lead_detail') or \Request::is('appointment/appointmentview') or \Request::is('user') or \Request::is('teacher') or \Request::is('parent') or \Request::is('student') or \Request::is('teacher_timing') or \Request::is('teacher_course') or \Request::is('schedule') or \Request::is('daily_schedule') or \Request::is('student_classes') or \Request::is('trial_confirmation') or \Request::is('invoice') or \Request::is('schedule_parent') or \Route::currentRouteName('schedule_parent.search'))  
   <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
   <script src="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js"></script>
 
@@ -32,10 +40,19 @@
         'paging'      : true,
         'lengthChange': false,
         'searching'   : false,
-        'ordering'    : true,
+        'ordering'    : false,
         'info'        : true,
         'autoWidth'   : false
       })
+      $('#example3').DataTable()
+	  $('#example4').DataTable({
+        'paging'      : false,
+        'lengthChange': false,
+        'searching'   : false,
+        'ordering'    : false,
+        'info'        : true,
+        'autoWidth'   : false
+      })	  
     })
   </script>
 @endif
@@ -62,7 +79,7 @@
 </script>  
 @endif
 
-@if (\Request::is('profile') or \Request::is('admins/create') or Route::currentRouteName()=='admins.edit' or \Request::is('categories/create') or Route::currentRouteName()=='categories.edit')  
+@if (\Request::is('profile') or \Request::is('admins/create') or Route::currentRouteName()=='admins.edit' or \Request::is('categories/create') or Route::currentRouteName()=='categories.edit' or Route::currentRouteName()=='user.create' or Route::currentRouteName()=='user.edit' or Route::currentRouteName()=='teacher.create' or Route::currentRouteName()=='teacher.edit' or Route::currentRouteName()=='parent.create' or Route::currentRouteName()=='parent.edit' or Route::currentRouteName()=='student.create' or Route::currentRouteName()=='student.edit')  
 <script src="{{ asset('js/fileinput.min.js') }}"></script>
   <script>
   @if(Route::currentRouteName()=='admins.edit' or \Request::is('profile') )

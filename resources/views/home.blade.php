@@ -10,7 +10,7 @@
 @endif
 <div class="login-box">
   <div class="login-logo">
-  <img src="{{ asset('img/logo.png') }}" width="310px">
+  <img src="{{ asset('img/logo.png') }}">
   </div>
   <!-- /.login-logo -->
   <div class="login-box-body">
@@ -46,7 +46,7 @@
         </div>
         <!-- /.col -->
         <div class="col-xs-4">
-          <button type="submit" class="btn btn-primary btn-block btn-flat" style="background-color: #cfa54b;">
+          <button type="submit" class="btn btn-primary btn-block btn-flat">
             {{ __('Login') }}
           </button>
         </div>

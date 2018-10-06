@@ -13,19 +13,22 @@ class NewLead extends Notification
 {
     use Queueable;
 
-	protected $user_info;	
-	protected $lead_info;
+	//protected $user_info;	
+	//protected $lead_info;
+	private $subscription;
 	
     /**
      * Create a new notification instance.
      *
      * @return void
      */
-    public function __construct(User $user_info,Lead $lead_info)
+    public function __construct($letter)
     {
         //
-		$this->user = $user_info;
-		$this->lead = $lead_info;
+		//$this->user = $user_info;
+		//$this->lead = $lead_info;
+		
+		$this->subscription = $letter;
     }
 
     /**
@@ -36,7 +39,7 @@ class NewLead extends Notification
      */
     public function via($notifiable)
     {
-        return ['mail','database'];
+        return ['database'];
     }
 
     /**
@@ -45,16 +48,17 @@ class NewLead extends Notification
      * @param  mixed  $notifiable
      * @return \Illuminate\Notifications\Messages\MailMessage
      */
-    public function toMail($notifiable)
+/*     public function toMail($notifiable)
     {
         return (new MailMessage)
+					->subject('New Lead Added')
 					->line("New User Added: ".$this->user->fname." ".$this->user->lname)
 					->line("With Lead/Business Name: ".$this->lead->businessName)		
                     ->action('Notification Action', url('http://localhost:8000/lead/leadview'))
                     ->line('Thank you for using our application!');
-    }
+    } */
 	
- 	public function toDatabase(){
+/*  	public function toDatabase(){
 		//
 		return [
 			'id' => $this->lead->id,
@@ -68,8 +72,16 @@ class NewLead extends Notification
 			'web_link' => $this->lead->web_link,
 			'created_at' => $this->lead->created_at 		
 		];
-	}
+	} */
 
+ 	public function toDatabase($notifiable){
+		//
+		return [
+			'letter' => $this->subscription,
+		
+		];
+	}	
+	
     /**
      * Get the array representation of the notification.
      *

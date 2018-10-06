@@ -11,6 +11,8 @@ use Illuminate\Support\Facades\Hash;
 use DB;
 use App\Notifications\RecordingPublished;
 use App\Notifications\NewLead;
+use Illuminate\Notifications\DatabaseNotification;
+use Illuminate\Support\Facades\Gate;
 
 
 class UserController extends Controller
@@ -214,9 +216,35 @@ class UserController extends Controller
 		//exit;
 		$lead->save();
 		//Laravel Email Notification during USER and LEAD Insertion
-		$lead->notify(new NewLead($user,$lead));
+		$user->notify(new NewLead($user,$lead));
         return redirect('lead/leadview')->with('success', 'Customer has been created successfully against the lead.');
     }
+	
+	public function markAsRead_NOT_OLD($id) {
+        $user = \Auth::user($id);
+        $notification = $user->notifications->markAsRead_WITHID($id);
+        if ($notification)
+        {
+            //$notification->delete();
+            return back();
+        }
+        else
+            return back()->withErrors('NOT READ');
+    }
+	
+	public function markAsRead_NOT($id, Request $request)
+{
+	
+    $user = \App\User::find($id);
+    $user->unReadnotifications->map(function($n) use($request) {
+        if($n->id == $request->get('notification_uuid')){
+            $n->markAsRead();
+        }
+    });
+
+    return back();
+}
+	
 
     public function store_recording(Request $request)
     {
@@ -292,14 +320,23 @@ class UserController extends Controller
     public function edit($id)
     {
         $user=\App\User::find($id);
-        return view('adminsedit',compact('user','id'));
+		//if(Gate::allows('isSuperAdmin',$user)){
+			return view('adminsedit',compact('user','id'));
+		//}
+		//else{
+			return view('404',compact('user','id'))->with('message','You are not allowed to EDIT USERS');
+		//}
+        
     }
 	
 	public function edit_lead($id)
     {
         //
 		$edit_lead = \App\Lead::find($id);
+		if(Auth::user()->can('update',$edit_lead))
 		return view('lead.leadedit',['edit_lead' => $edit_lead, 'id' => $id ]);
+		else
+		return view('404')->with('message','NOT ALLOWED');
     }
 
     //For Reset Password

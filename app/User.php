@@ -1,11 +1,9 @@
 <?php
 
 namespace App;
-use DB;
+
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
-// Added for the hasMany method
-use Illuminate\Database\Eloquent\Model;
 
 class User extends Authenticatable
 {
@@ -33,15 +31,13 @@ class User extends Authenticatable
         'created_at',
         'updated_at'
     ];
-	
-	public function lead()
-    {
-        return $this->hasMany('App\Lead');
+    public function role(){
+        return $this->hasOne(Role::class, 'id', 'role_id' );
     }
-	
-	public function appointment()
-	{
-		return $this->hasMany('App\Appointment');
-	}
-
+    
+    public function conversation()
+    {
+        return $this->hasMany(Conversation::class,'id','created_by');
+    }
+    
 }

@@ -44,7 +44,7 @@
 
 
 	Chart.Type.extend({
-		name: "Bar",
+		name: "",
 		defaults : defaultConfig,
 		initialize:  function(data){
 

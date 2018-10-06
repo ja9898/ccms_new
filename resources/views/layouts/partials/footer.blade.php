@@ -5,5 +5,5 @@
       
     </div>
     <!-- Default to the left -->
-    <strong>Copyright &copy; {{date('Y')}} <a href="#">Alladins</a>.</strong> All rights reserved.
+    <strong>Copyright &copy; {{date('Y')}} <a href="#">YourCloudCampus</a>.</strong> All rights reserved.
   </footer>

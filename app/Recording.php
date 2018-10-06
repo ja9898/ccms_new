@@ -3,21 +3,24 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
-//use Illuminate\Notifications\Notification;
 
 class Recording extends Model
 {
-    //use Notifiable;
-	
-	public $table = 'recording';
-    //
-	protected $fillable = [
-    'title','link','note','recording_file','lead_id',
+    protected $fillable = [
+        'title','link','note','recording_file','lead_id', 'created_by',
     ];
-	
-	public function lead()
+        
+    protected $dates = [
+        'created_at',
+        'updated_at'
+    ];
+    public function lead()
     {
-        //return $this->belongsTo('App\User');
-		return $this->belongsTo('App\Lead', 'lead_id');
+        return $this->belongsTo('App\Lead', 'lead_id');
+    }
+
+    public function createdby()
+    {
+        return $this->belongsTo('App\User', 'created_by');
     }
 }

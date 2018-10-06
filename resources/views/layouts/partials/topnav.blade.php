@@ -8,7 +8,7 @@ $user = Auth::user();
   <!-- mini logo for sidebar mini 50x50 pixels -->
   <span class="logo-mini"><b>ALD</b></span>
   <!-- logo for regular state and mobile devices -->
-  <span class="logo-lg"><b>Aladdins</b></span>
+  <span class="logo-lg"><b>YCC</b></span>
 </a>
 
 <!-- Header Navbar -->
@@ -20,13 +20,13 @@ $user = Auth::user();
   <!-- Navbar Right Menu -->
   <div class="navbar-custom-menu">
     <ul class="nav navbar-nav">
-@inject('lead', 'App\Lead')
+	
       <!-- Notifications Menu -->
       <li class="dropdown notifications-menu">
         <!-- Menu toggle button -->
         <a href="#" class="dropdown-toggle" data-toggle="dropdown">
           <i class="fa fa-bell-o"></i>
-          <span class="label label-warning">{{ $lead->lead_notification()->count() }}</span>
+          <span class="label label-warning"></span>
         </a>
         <ul class="dropdown-menu">
           <li class="header">You have following notifications</li>
@@ -41,7 +41,7 @@ $user = Auth::user();
               <!-- end notification -->
 			  <li><!-- start notification -->
                 <a href="#">
-                  <i class="fa fa-users text-aqua"></i> {{ $lead->lead_notification()->count() }} new leads added today
+                  <i class="fa fa-users text-aqua"></i>new leads added today
                 </a>
               </li>
               <!-- end notification -->
@@ -50,6 +50,44 @@ $user = Auth::user();
           <!--<li class="footer"><a href="#">View all</a></li>-->
         </ul>
       </li>
+	  
+      <!-- Notifications Menu -->
+      <li class="dropdown notifications-menu">
+        <!-- Menu toggle button -->
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+          <i class="fa fa-bell-o"></i>
+          <span class="label label-warning"> </span>
+        </a>
+        <ul class="dropdown-menu">
+          <li class="header">You have following notifications</li>
+          <li>
+            <!-- Inner Menu: contains the notifications -->
+            <ul class="menu">
+              <li><!-- start notification -->
+                <a href="">
+                  <i class=""></i>Mark all as Read
+                </a>
+              </li>
+			  <li><!-- start notification -->
+                <a href="">
+                  <i class=""></i>Mark all as UNRead
+                </a>
+              </li>
+              <!-- end notification -->
+			  <li><!-- start notification -->
+               
+				<a href="">
+                  <i class="fa fa-users text-aqua"></i>
+					  
+                </a>
+			
+              </li>
+              <!-- end notification -->
+            </ul>
+          </li>
+          <!--<li class="footer"><a href="#">View all</a></li>-->
+        </ul>
+      </li>	  
       
       
       <!-- User Account Menu -->
@@ -59,7 +97,7 @@ $user = Auth::user();
           <!-- The user image in the navbar-->
           <img src="{{ asset('img/staff/'.$user->avatar) }}" class="user-image" alt="User Image">
           <!-- hidden-xs hides the username on small devices so only the image appears. -->
-          <span class="hidden-xs">{{$user->fname}} {{$user->lname}}</span>
+          <span class="hidden-xs"></span>
         </a>
         <ul class="dropdown-menu">
           <!-- The user image in the menu -->
@@ -67,7 +105,7 @@ $user = Auth::user();
             <img src="{{ asset('img/staff/'.$user->avatar) }}" class="img-circle" alt="User Image">
 
             <p>
-              {{$user->fname}} {{$user->lname}}
+              
               <small>Member since Nov. 2012</small>
             </p>
           </li>

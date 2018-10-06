@@ -31,7 +31,20 @@
         <!-- fix for small devices only -->
        
       </div>
-
+	  
+<div class="row">
+	<div class="col-md-6 col-sm-6 col-xs-12">
+		<h2>Unread Notifications</h2>
+		@foreach(Auth::user()->unReadNotifications as $notifications)
+			<h4>{{ $notifications->data['letter']['title'] }}</h4>
+		@endforeach
+		<h2>Read Notifications</h2>
+		@foreach(Auth::user()->ReadNotifications as $notifications)
+			<h4>{{ $notifications->data['letter']['title'] }}</h4>
+		@endforeach
+	</div>
+</div>
+	  
 <div class="row">
   
         <div class="col-md-3 col-sm-6 col-xs-12">

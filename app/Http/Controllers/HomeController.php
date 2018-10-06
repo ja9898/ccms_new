@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests;
 use Illuminate\Http\Request;
 
 
@@ -27,4 +28,19 @@ class HomeController extends Controller
         //return view('dashboard');
         return redirect()->route('dashboard');
     }
+	
+    public function dashboard()
+    {
+
+        return view('dashboard');
+        
+    }	
+/* 	public function dashboard_teamlead()
+	{
+		return view('dashboard_teamlead');
+	}
+	public function dashboard_teacher()
+	{
+		return view('dashboard_teacher');
+	} */
 }

@@ -65,8 +65,10 @@
                     <!-- For Delete Form Ends -->
                     <td>
                       <a href="{!! url('/lead/lead_detail/'.$lead['id'] ); !!}" class="btn btn-primary" title="View Detail"><i class="fa fa-eye"></i> </a>    
-                      <a href="{!! url('/lead/'.$lead['id'].'/edit'); !!}"  class="btn btn-success" title="Edit"><i class="fa fa-edit"></i> </a>
-                      <a href="{!! url('/recording/'.$lead['id'].'/recordingcreate'); !!}" target='_blank'  class="btn btn-warning" title="Recording link"><i class="fa fa-file-audio-o"></i> </a>
+                      @can('update',$lead)
+					  <a href="{!! url('/lead/'.$lead['id'].'/edit'); !!}"  class="btn btn-success" title="Edit"><i class="fa fa-edit"></i> </a>
+                      @endcan
+					  <a href="{!! url('/recording/'.$lead['id'].'/recordingcreate'); !!}" target='_blank'  class="btn btn-warning" title="Recording link"><i class="fa fa-file-audio-o"></i> </a>
                       <a href="{!! url('/appointment/'.$lead['id'].'/appointmentcreate'); !!}" target='_blank'  class="btn btn-primary" title="Make appointment"><i class="fa fa-calendar"></i> </a>
                       
 					  @if ($lead['leadstatus'] === 1)
