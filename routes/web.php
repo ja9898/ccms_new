@@ -150,3 +150,6 @@ Route::get('/changepassword', ['as' => 'changepassword' , function () {
  Route::resource('total_payments','TotalPaymentsController')->middleware('auth'); 
  Route::get('/total_payments/pay/{id}','TotalPaymentsController@pay')->middleware('auth');
  
+ //payment record report
+ Route::resource('payment_record_report','PaymentRecordReportController')->middleware('auth');
+ 

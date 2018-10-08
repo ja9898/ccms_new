@@ -93,6 +93,18 @@ $_LIST=array('Select Currency','GBP','USD','CAD','AUD','NZD','SGD');
 		<li class="<?php echo ($urlpath == 'student' || Route::currentRouteName()=='student.edit' || Route::currentRouteName()=='student.create' || Route::currentRouteName()=='student.show') ? "active" : ""; ?>"><a href="{!! url('/student'); !!}">Manage Students</a></li>
 		<li class="<?php echo ($urlpath == 'student_classes' || Route::currentRouteName()=='student_classes.edit' || Route::currentRouteName()=='student_classes.create' || Route::currentRouteName()=='student_classes.show') ? "active" : ""; ?>"><a href="{!! url('/student_classes'); !!}">Student Classes</a></li>
       </ul>
+    </li>
+	<!--Reports-->
+    <li class="treeview <?php echo ($urlpath == 'report' || $urlpath == 'report' || Route::currentRouteName()=='report.edit'  || Route::currentRouteName()=='report.create' || Route::currentRouteName()=='report.show' ) ? "active" : ""; ?>">
+      <a href="#"><i class="fa fa-child"></i> <span>Reports</span>
+        <span class="pull-right-container">
+            <i class="fa fa-angle-left pull-right"></i>
+          </span>
+      </a>
+     <ul class="treeview-menu">
+		<li class="<?php echo ($urlpath == 'pending' || Route::currentRouteName()=='pending.edit' || Route::currentRouteName()=='pending.create' || Route::currentRouteName()=='pending.show') ? "active" : ""; ?>"><a href="{!! url('/pending'); !!}">Pending Report</a></li>
+		<li class="<?php echo ($urlpath == 'payment_record_report' || Route::currentRouteName()=='payment_record_report.edit' || Route::currentRouteName()=='payment_record_report.create' || Route::currentRouteName()=='payment_record_report.show') ? "active" : ""; ?>"><a href="{!! url('/payment_record_report'); !!}">Payment Record Report</a></li>
+      </ul>
     </li>	
     <!-- <li class="<?php //echo ($urlpath == 'categories' || Route::currentRouteName()=='categories.create' || Route::currentRouteName()=='categories.edit')  ? "active" : ""; ?>"><a href="{!! url('/categories'); !!}"><i class="fa fa-tag"></i> <span>Categories</span></a></li>
     Multi Level 
