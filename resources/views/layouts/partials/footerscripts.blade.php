@@ -29,7 +29,7 @@
      Both of these plugins are recommended to enhance the
      user experience. -->
      <!-- page script -->
-@if (\Request::is('admins') or \Request::is('roles') or \Request::is('categories') or \Request::is('lead/leadview') or \Request::is('recording/recordingview') or \Request::is('lead/lead_detail') or \Request::is('appointment/appointmentview') or \Request::is('user') or \Request::is('teacher') or \Request::is('parent') or \Request::is('student') or \Request::is('teacher_timing') or \Request::is('teacher_course') or \Request::is('schedule') or \Request::is('daily_schedule') or \Request::is('student_classes') or \Request::is('trial_confirmation') or \Request::is('invoice') or \Request::is('schedule_parent') or \Route::currentRouteName('schedule_parent.search'))  
+@if (\Request::is('admins') or \Request::is('roles') or \Request::is('categories') or \Request::is('lead/leadview') or \Request::is('recording/recordingview') or \Request::is('lead/lead_detail') or \Request::is('appointment/appointmentview') or \Request::is('user') or \Request::is('teacher') or \Request::is('parent') or \Request::is('student') or \Request::is('teacher_timing') or \Request::is('teacher_course') or \Request::is('schedule') or \Request::is('daily_schedule') or \Request::is('student_classes') or \Request::is('trial_confirmation') or \Request::is('invoice') or \Request::is('schedule_parent') or \Route::currentRouteName('schedule_parent.search') or \Request::is('pending/pre_month_pending') or \Request::is('pending/curr_month_pending'))  
   <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
   <script src="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js"></script>
 
@@ -107,7 +107,7 @@
   });
   </script>
 @endif
-@if (\Request::is('dashboard'))  
+@if (\Request::is('dashboard') or \Request::is('dashboard_teamlead'))  
 <!-- ChartJS -->
 <script src="{{ asset('bower_components/chart.js/Chart.js') }}"></script>
 <script>

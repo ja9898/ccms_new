@@ -144,12 +144,29 @@ Route::get('/changepassword', ['as' => 'changepassword' , function () {
  Route::get('/schedule_parent/createInvoice/{id}','ScheduleParentController@createInvoice')->middleware('auth');
  
  //pending
+ Route::get('/pending/pre_month_pending','PendingController@pre_pending')->middleware('auth'); 
+ Route::get('/pending/curr_month_pending','PendingController@curr_pending')->middleware('auth'); 
  Route::resource('pending','PendingController')->middleware('auth'); 
+ 
  
  //total payments
  Route::resource('total_payments','TotalPaymentsController')->middleware('auth'); 
  Route::get('/total_payments/pay/{id}','TotalPaymentsController@pay')->middleware('auth');
  
  //payment record report
+ Route::post('/payment_record_report/search','PaymentRecordReportController@index')->middleware('auth')->name('payment_record_report.search');
+ Route::get('/payment_record_report/export_csv/{st_dt}/{en_dt}','PaymentRecordReportController@export_csv')->middleware('auth');
  Route::resource('payment_record_report','PaymentRecordReportController')->middleware('auth');
+ 
+ //regular class statistics
+ Route::resource('regular_class_statistics','RegularClassStatsController')->middleware('auth');
+
+ //salary commision
+ Route::resource('salary_commision','SalaryCommisionController')->middleware('auth');
+ 
+ //pending with balance
+ Route::resource('pending_with_balance','PendingWithBalanceController')->middleware('auth');
+
+ //teamlead teacher report
+ Route::resource('teamlead_teacher_report','TeamleadTeacherReportController')->middleware('auth');
  

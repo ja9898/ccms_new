@@ -8,10 +8,18 @@
       
     </script>
 @endif
+@if(session('failed'))
+    <script>
+      $( document ).ready(function() {
+        swal("Failed", "{{session('failed')}}", "error");
+      });
+      
+    </script>
+@endif
 
 <div class="row">
     <div class="col-md-12">
-        <form class="form-horizontal" action="{!! url('/payment_record_report/search'); !!}" method="post" enctype="multipart/form-data">
+        <form class="form-horizontal" action="{!! url('/schedule_parent/search'); !!}" method="post" enctype="multipart/form-data">
           @csrf
         <div class="box box-success collapsed-box">
           <div class="box-header with-border">
@@ -27,7 +35,27 @@
           <div class="box-body" style="display: none;">
             
             <!--Search Form Begins -->
-           
+			  <div class="form-group col-md-12">
+                <label>Select Main Teamlead</label>
+                <select name="mttlId" class="form-control select2 select2-hidden-accessible" multiple="" data-placeholder="Select a Main Teamlead" style="width: 100%;" tabindex="-1" aria-hidden="true">
+                  <option value="all">All</option>
+                  @foreach($main_teamleads as $key => $main_teamlead)
+                    <option value="{{$key}}">{{$main_teamlead}} </option>
+                  @endforeach                
+                </select>
+                
+              </div>
+			  
+			  <div class="form-group col-md-12">
+                <label>Select Teamlead</label>
+                <select name="ttlId" class="form-control select2 select2-hidden-accessible" multiple="" data-placeholder="Select a Teamlead" style="width: 100%;" tabindex="-1" aria-hidden="true">
+                  <option value="all">All</option>
+                  @foreach($teamleads as $key => $teamlead)
+                    <option value="{{$key}}">{{$teamlead}} </option>
+                  @endforeach                
+                </select>
+                
+              </div>
 
               <div class="form-group col-md-12">
                   <label>Select Date Range:</label>
@@ -93,70 +121,60 @@
       </div>
 </div>
 
+
+
+
 <div class="row">
         <div class="col-xs-12">
           <div class="box">
             <div class="box-header">
-              <h3 class="box-title">Payment Record Report</h3>
+              <h3 class="box-title">Pending Previous Month</h3>
               <span class="pull-right">
-              <!--<a href="{!! url('/payment_record_report/export_csv/1/10'); !!}" class="btn btn-success">
-			  <span class="fa fa-file-excel-o"></span> Export CSV</a>-->
-			  
-				@if($selected_fromDate || $selected_toDate)
-					<h4 class="box-title">Date Range : </h4>{{ $selected_fromDate }} to {{ $selected_toDate }}
-				@else
-					Nothing
-				@endif
-              <span class="pull-right">
-              <a href="{!! url('/payment_record_report/export_csv/'.$selected_fromDate.'/'.$selected_toDate); !!}" class="btn btn-info"><span class="fa fa-plus"></span> Export CSV</a>
-
-			  
-			  
+              
             </div>
             <!-- /.box-header -->
             <div class="box-body">
             
-              <table id="example1" class="display responsive nowrap" style="width:100%">
+              <table id="example4" class="display responsive nowrap" style="width:100%">
                 <thead>
-                <tr>				  
-				  <th>Month Payment Date</th>
-                  <th>Received Date</th>
+                <tr>
+				  <th>Day</th>	
+				  <th>Ext Id</th>	
 				  <th>Student</th>
-                  <th>RECURRING</th>
-				  <th>SIGNUP</th>
-				  <th>Amount Entered Local</th>
-				  <th>Amount Entered USD</th>
-				  <th>Discount</th>
-				  <!--<th>Amount SCH USD</th>
-				  <th>Amount SCH Local</th>-->
-				  <th>Currency</th>
-				  <th>Action</th>
+				  <th>Parent</th>	
+				  <th>Class details</th>	
+				  <th>Teacher</th>	
+				  <th>TL Name</th>	
+				  <th>Country</th>	
+				  <th>Pending USD</th>
+				  <th>Pending Original</th>
+				  <th>Deducted USD</th>
                 </tr>
                 </thead>
                 <tbody>
 				  
 				  <?php
-                  for ($x = 1; $x <= 10; $x++) {
+				  $sum_usd = 30;
+				  $sum_usd_deduct = 28;
+				  $sum_total_usd = 0;
+				  $sum_total_usd_deduct = 0;
+				  
+                  for ($x = 1; $x <= 20; $x++) {
                 ?>
                   <tr>
-					<td><?php echo date('Y-m-d'); ?></td>
-					<td><?php echo date('Y-m-d'); ?></td>
+				    <td><?php echo $x+5; ?></td>
+					<td>7000<?php echo $x; ?></td>
 					<td>Student <?php echo $x; ?></td>
-					<?php if($x<=5) { echo "<td>".$x."</td>";
-									  echo "<td></td>";} ?>
-					<?php if($x>5) { echo "<td></td>";
-									 echo "<td>".$x."</td>"; } ?>
-					<td>50</td>
-                    <td>40</td>
-					<td>0</td>
-					<!--<td>40</td>
-                    <td>50</td>-->
-					<td>CAD</td>
-					<td>
-                      <a href="{!! url('/payment_record_report/'.$x) !!}" class="btn btn-primary" title="View Detail"><i class="fa fa-eye"></i> </a>
-					  <a class="btn btn-danger" title="Delete"><i class="fa fa-trash"></i> </a>
-					  
-					</td>
+					<td>Parent <?php echo $x; ?></td>
+					<td><a href='#'>Classes <?php echo $x; ?></a></td>
+					<td>Teacher <?php echo $x; ?></td>
+					<td>Teamlead <?php echo $x; ?></td>
+					<td>Country <?php echo $x; ?></td>					
+					<td><?php echo $sum_usd;
+					$sum_total_usd+=$sum_usd; ?></td>
+					<td>50-CAD</td>
+					<td><?php echo $sum_usd_deduct;
+					$sum_total_usd_deduct+=$sum_usd_deduct; ?></td>
                   </tr>
 
                 <?php
@@ -165,20 +183,15 @@
 				  
                 </tbody>
                 <tfoot>
-                <tr>
-				  <th>Current Date</th>
-                  <th>Received Date</th>
-				  <th>Student</th>
-                  <th>RECURRING</th>
-				  <th>SIGNUP</th>
-				  <th>Amount Entered Local</th>
-				  <th>Amount Entered USD</th>
-				  <th>Discount</th>
-					<!--<th>Amount SCH USD</th>
-				  <th>Amount SCH Local</th>-->
-				  <th>Currency</th>
-				  <th>Action</th>				  
+
+				
+				<tr bgcolor="#fff">
+					<td colspan="8" align="right"><b>Sum</b></td>
+					<td><?php echo $sum_total_usd;?></td>
+					<td></td>
+					<td><?php echo $sum_total_usd_deduct;?></td>
                 </tr>
+				
                 </tfoot>
               </table>
 
@@ -186,6 +199,13 @@
             <!-- /.box-body -->
           </div>
           <!-- /.box -->
+		  
+		  
+		  
+		  
+		  
+		  
+		  
         </div>
         <!-- /.col -->
       </div>

@@ -63,7 +63,7 @@
 console.log("{{Route::currentRouteName()}}");
 </script>-->
 <!--For Date Range Pickers-->
-@if (Route::currentRouteName()=='leads.index' or Route::currentRouteName()=='leads.search' or Route::currentRouteName()=='schedule_parent.index') 
+@if (Route::currentRouteName()=='leads.index' or Route::currentRouteName()=='leads.search' or Route::currentRouteName()=='schedule_parent.index' or Route::currentRouteName()=='pending.index' or Route::currentRouteName()=='regular_class_statistics.index' or Route::currentRouteName()=='salary_commision.index' or Route::currentRouteName()=='pending_with_balance.index' or Route::currentRouteName()=='teamlead_teacher_report.index' or Route::currentRouteName()=='payment_record_report.index' or Route::currentRouteName()=='payment_record_report.search') 
   <script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.9.0/moment-with-locales.js"></script>
   <script src="{{ asset('bower_components/bootstrap-daterangepicker/daterangepicker.js') }}"></script>
   <link href="{{ asset('bower_components/bootstrap-daterangepicker/daterangepicker.css') }}" rel="stylesheet">

@@ -57,7 +57,7 @@
                 </tr>
                 <tr>
                     <td width="25%"><b>Student </b></td>
-                    <td width="75%">Student {{ $id }}</td>
+                    <td width="75%">Student {{ $id }} {{ $id_en }}</td>
                 </tr>
 				
 				<tr>

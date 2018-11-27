@@ -36,10 +36,20 @@ $_LIST=array('Select Currency','GBP','USD','CAD','AUD','NZD','SGD');
   <ul class="sidebar-menu" data-widget="tree">
     <li class="header">NAVIGATION</li>
     
-    <li class="<?php echo ($urlpath == 'dashboard') ? "active" : ""; ?>">
-	  <a href="{!! url('/dashboard'); !!}"><i class="fa fa-dashboard"></i> <span>Dashboard</span>
-	  </a>
-	</li>
+
+	<li class="treeview">
+          <a href="{!! url('/dashboard'); !!}">
+            <i class="fa fa-dashboard"></i> <span>Dashboard</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+            <li><a href="{!! url('/dashboard_teacher'); !!}"><i class="fa fa-circle-o"></i> Dashboard Teacher</a></li>
+            <li><a href="{!! url('/dashboard_teamlead'); !!}"><i class="fa fa-circle-o"></i> Dashboard Teamlead</a></li>
+            
+          </ul>
+    </li>
 
     <li class="treeview <?php echo ($urlpath == 'admins' || $urlpath == 'roles' || Route::currentRouteName()=='roles.edit'  || Route::currentRouteName()=='admins.edit' || Route::currentRouteName()=='admins.create' || Route::currentRouteName()=='admins.show' ) ? "active" : ""; ?>">
       <a href="#"><i class="fa fa-users"></i> <span>Admins</span>
@@ -96,14 +106,20 @@ $_LIST=array('Select Currency','GBP','USD','CAD','AUD','NZD','SGD');
     </li>
 	<!--Reports-->
     <li class="treeview <?php echo ($urlpath == 'report' || $urlpath == 'report' || Route::currentRouteName()=='report.edit'  || Route::currentRouteName()=='report.create' || Route::currentRouteName()=='report.show' ) ? "active" : ""; ?>">
-      <a href="#"><i class="fa fa-child"></i> <span>Reports</span>
+      <a href="#"><i class="fa fa-file"></i> <span>Reports</span>
         <span class="pull-right-container">
             <i class="fa fa-angle-left pull-right"></i>
           </span>
       </a>
      <ul class="treeview-menu">
+		<li class="<?php echo ($urlpath == 'total_payments' || Route::currentRouteName()=='total_payments.edit' || Route::currentRouteName()=='total_payments.create' || Route::currentRouteName()=='total_payments.show') ? "active" : ""; ?>"><a href="{!! url('/total_payments'); !!}">Total payments</a></li>
 		<li class="<?php echo ($urlpath == 'pending' || Route::currentRouteName()=='pending.edit' || Route::currentRouteName()=='pending.create' || Route::currentRouteName()=='pending.show') ? "active" : ""; ?>"><a href="{!! url('/pending'); !!}">Pending Report</a></li>
 		<li class="<?php echo ($urlpath == 'payment_record_report' || Route::currentRouteName()=='payment_record_report.edit' || Route::currentRouteName()=='payment_record_report.create' || Route::currentRouteName()=='payment_record_report.show') ? "active" : ""; ?>"><a href="{!! url('/payment_record_report'); !!}">Payment Record Report</a></li>
+		<li class="<?php echo ($urlpath == 'regular_class_statistics' || Route::currentRouteName()=='regular_class_statistics.edit' || Route::currentRouteName()=='regular_class_statistics.create' || Route::currentRouteName()=='regular_class_statistics.show') ? "active" : ""; ?>"><a href="{!! url('/regular_class_statistics'); !!}">Regular class statss</a></li>
+		<li class="<?php echo ($urlpath == 'salary_commision' || Route::currentRouteName()=='salary_commision.edit' || Route::currentRouteName()=='salary_commision.create' || Route::currentRouteName()=='salary_commision.show') ? "active" : ""; ?>"><a href="{!! url('/salary_commision'); !!}">Salary commision</a></li>
+		<li class="<?php echo ($urlpath == 'pending_with_balance' || Route::currentRouteName()=='pending_with_balance.edit' || Route::currentRouteName()=='pending_with_balance.create' || Route::currentRouteName()=='pending_with_balance.show') ? "active" : ""; ?>"><a href="{!! url('/pending_with_balance'); !!}">Pending With Balance</a></li>
+		<li class="<?php echo ($urlpath == 'teamlead_teacher_report' || Route::currentRouteName()=='teamlead_teacher_report.edit' || Route::currentRouteName()=='teamlead_teacher_report.create' || Route::currentRouteName()=='teamlead_teacher_report.show') ? "active" : ""; ?>"><a href="{!! url('/teamlead_teacher_report'); !!}">Teacher Teamlead Report</a></li>
+		
       </ul>
     </li>	
     <!-- <li class="<?php //echo ($urlpath == 'categories' || Route::currentRouteName()=='categories.create' || Route::currentRouteName()=='categories.edit')  ? "active" : ""; ?>"><a href="{!! url('/categories'); !!}"><i class="fa fa-tag"></i> <span>Categories</span></a></li>

@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class PendingController extends Controller
+class RegularClassStatsController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,7 +16,7 @@ class PendingController extends Controller
         //
 		$main_teamleads = array('select Main Teamlead','MTTL1','MTTL2','MTTL3');
 		$teamleads = array('select TeamLead','TTL1','TTL2','TTL3');
-		return view('pending.list',compact('main_teamleads','teamleads'));
+		return view('regular_class_statistics.list',compact('main_teamleads','teamleads'));
     }
 
     /**
@@ -84,22 +84,4 @@ class PendingController extends Controller
     {
         //
     }
-
-	public function pre_pending()
-    {
-        //
-		$main_teamleads = array('select Main Teamlead','MTTL1','MTTL2','MTTL3');
-		$teamleads = array('select TeamLead','TTL1','TTL2','TTL3');
-		return view('pending.pre_month_pending',compact('main_teamleads','teamleads'));
-    }
-	
-	public function curr_pending()
-    {
-        //
-		$main_teamleads = array('select Main Teamlead','MTTL1','MTTL2','MTTL3');
-		$teamleads = array('select TeamLead','TTL1','TTL2','TTL3');
-		return view('pending.curr_month_pending',compact('main_teamleads','teamleads'));
-    }
-
-	
 }

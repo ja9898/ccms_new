@@ -18,7 +18,7 @@
         <!-- /.col -->
         <div class="col-md-3 col-sm-6 col-xs-12">
           <div class="info-box">
-            <span class="info-box-icon bg-red"><i class="fa fa-cc-paypal"></i></span>
+            <span class="info-box-icon bg-green"><i class="fa fa-dollar"></i></span>
 
             <div class="info-box-content">
               <span class="info-box-text">Recurring</span>
@@ -35,7 +35,7 @@
 
         <div class="col-md-3 col-sm-6 col-xs-12">
           <div class="info-box">
-            <span class="info-box-icon bg-green"><i class="fa fa-thumbs-down"></i></span>
+            <span class="info-box-icon bg-red"><i class="fa fa-thumbs-down"></i></span>
 
             <div class="info-box-content">
               <span class="info-box-text">Dead</span>
@@ -81,7 +81,7 @@
                 <table class="table no-margin">
                   <thead>
                   <tr>
-                    <th>Teamlead</th>
+                    <th>Teacher</th>
                     <th>Student Name</th>
                     <th>Amount</th>
                     <th>Action</th>
@@ -89,12 +89,16 @@
                   </thead>
                   <tbody>
 				    <?php
+					$amount = 0;
+					$sum=0;
+					$pending_sum = 0;
                   for ($x = 0; $x <= 10; $x++) {
                 ?>
                   <tr>
-                    <td>Teamlead <?php echo $x; ?></td>
+                    <td>Teacher <?php echo $x; ?></td>
                     <td>Student <?php echo $x; ?></td>
-                    <td><?php echo $x; ?>00</td>
+                    <td><?php echo $amount=$amount + 100; 
+						$pending_sum=$pending_sum + $amount;?></td>
                     <td><a class="btn btn-primary" title="Pay"  href="{!! url('/teacher/'.$x.'/edit') !!}">PAY </a>
                       </td>
                   </tr>
@@ -102,6 +106,10 @@
 				  <?php
                   }
                 ?>
+				<tr bgcolor="#fff">
+					<td colspan="2" align="right"><b>Sum</b></td>
+					<td><?php echo $pending_sum;?></td>
+                </tr>
                   </tbody>
                 </table>
               </div>

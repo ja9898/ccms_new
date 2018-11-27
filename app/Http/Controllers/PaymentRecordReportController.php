@@ -11,10 +11,16 @@ class PaymentRecordReportController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
-		return view('payment_record_report.list');
+		$selected_fromDate='';
+		$selected_toDate='';
+		if($request->get('dateFrom') || $request->get('dateTo')){
+			$selected_fromDate = $request->get('dateFrom');
+			$selected_toDate = $request->get('dateTo');
+		}
+		return view('payment_record_report.list',compact('selected_fromDate','selected_toDate'));
+		
     }
 
     /**
@@ -83,4 +89,13 @@ class PaymentRecordReportController extends Controller
     {
         //
     }
+	
+	public function export_csv($st_dt,$en_dt)
+	{
+		//
+		echo $st_dt;
+		echo $en_dt;
+		//exit;
+		return view('payment_record_report.export_csv',compact('st_dt','en_dt'));
+	}
 }

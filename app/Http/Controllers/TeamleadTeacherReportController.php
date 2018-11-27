@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class PendingController extends Controller
+class TeamleadTeacherReportController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,9 +14,11 @@ class PendingController extends Controller
     public function index()
     {
         //
-		$main_teamleads = array('select Main Teamlead','MTTL1','MTTL2','MTTL3');
-		$teamleads = array('select TeamLead','TTL1','TTL2','TTL3');
-		return view('pending.list',compact('main_teamleads','teamleads'));
+		$main_teamleads = array('Select Main Teamlead','MTTL1','MTTL2','MTTL3');
+		$teamleads = array('Select TeamLead','TTL1','TTL2','TTL3');
+		$teachers = array('Select Teacher','Teacher1','Teacher2','Teacher3');
+		$stdStatus=array('Student Status','Trial','Regular','Discontinue','Freez');  
+		return view('teamlead_teacher_report.list',compact('main_teamleads','teamleads','teachers','stdStatus'));
     }
 
     /**
@@ -84,22 +86,4 @@ class PendingController extends Controller
     {
         //
     }
-
-	public function pre_pending()
-    {
-        //
-		$main_teamleads = array('select Main Teamlead','MTTL1','MTTL2','MTTL3');
-		$teamleads = array('select TeamLead','TTL1','TTL2','TTL3');
-		return view('pending.pre_month_pending',compact('main_teamleads','teamleads'));
-    }
-	
-	public function curr_pending()
-    {
-        //
-		$main_teamleads = array('select Main Teamlead','MTTL1','MTTL2','MTTL3');
-		$teamleads = array('select TeamLead','TTL1','TTL2','TTL3');
-		return view('pending.curr_month_pending',compact('main_teamleads','teamleads'));
-    }
-
-	
 }

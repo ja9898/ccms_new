@@ -153,12 +153,16 @@
 						<option value="7">Floor Assistant</option>
 						<option value="8">Teacher TeamLead</option>
 						<option value="9">Agent TeamLead</option>
-						<option value="10">Human Resource</option>
-						<option value="11">Main Teacher TeamLead</option>
-						<option value="12">Main Agent TeamLead</option>
-						<option value="13">IT Department</option>
-						<option value="14">Quality Assurance</option>
-						<option value="15">Parent</option>						
+						<option value="10">Day Admin</option>
+						<option value="11">Human Resource</option>
+						<option value="12">PA to CEO</option>
+						<option value="13">Shift Manager</option>
+						<option value="14">New</option>
+						<option value="15">Main Teacher TeamLead</option>
+						<option value="16">Main Agent TeamLead</option>
+						<option value="17">IT Department</option>
+						<option value="18">Quality Assurance</option>
+						<option value="19">Parent</option>					
 					  </select>
                     @if ($errors->has('user_type'))
                           <span class="text-red">
